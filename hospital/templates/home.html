@@ -1,0 +1,108 @@
+{% include 'base.html' %}
+{% load static %}
+{% include 'navigation.html' %}
+<style>
+    body{
+        background-color: aliceblue;
+    }
+</style>
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MedicoHerb - Welcome</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 1em 0;
+        }
+
+        #hospital-photo {
+            width: 100%;
+            max-height: 400px;
+            object-fit: cover;
+        }
+
+        #hospital-info {
+            padding: 15px;
+        }
+
+        #contact-info {
+            background-color: #fff;
+            padding: 15px;
+            margin: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        #specialist-doctors {
+            background-color: #fff;
+            padding: 15px;
+            margin: 20px 20px 50px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>MedicoHerb</h1>
+    </header>
+
+    <section id="hospital-info">
+        <div class="image-container">
+            <img src="{% static 'images/hp.jpg' %}" alt="Hospital Photo" id="hospital-photo">
+            <div class="overlay-text">
+                <p>Health Care Services</p>
+                <p>We care about your health</p>
+            </div>            
+            
+        </div>
+        <p style="position: relative; bottom: -10px; text-align: left; font-size: larger; text-decoration-color: #09e9b5;">Welcome to MedicoHerb, where your health is our priority. Our team of dedicated professionals is here to serve you.</p>
+    </section>
+    
+    <style>
+        .image-container {
+            position: relative;
+        }
+        .overlay-text {
+        position: absolute;
+        top: 85%;
+        left: 13%;
+        transform: translate(-50%, -50%);
+        color: rgb(29, 36, 225);
+        text-align: left;
+        font-size: x-large;
+        }
+    </style>
+     <section id="contact-info">
+        <h2>Contact Information</h2>
+        <p><strong>Address:</strong> Hospital Address, City, Country</p>
+        <p><strong>Phone:</strong> +123 456 7890</p>
+        <p><strong>Email:</strong> info@hospitalname.com</p>
+    </section>
+
+    <section id="specialist-doctors">
+        <h2>Our Specialist Doctors</h2>
+        <ul>
+            <li><strong>Dr. John Doe</strong> - Cardiologist</li>
+            <li><strong>Dr. Jane Smith</strong> - Neurologist</li>
+            <li><strong>Dr. David Johnson</strong> - Orthopedic Surgeon</li>
+            <!-- Add more doctors as needed -->
+        </ul>
+    </section>
+</body>
+</html>
+
+{% endblock content %}
+{% include 'footer.html' %}

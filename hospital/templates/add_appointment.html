@@ -1,0 +1,38 @@
+{% include 'base.html' %}
+{% include 'navigation.html' %}
+{% load static %}
+{% if error == "no" %}
+    <script>
+        alert('Record save successfully');
+        window.location = "{% url 'view_appointment' %}";
+    </script>
+{% endif %}
+
+{% if error == "yes" %}
+    <script>
+        alert('Invalid credentials!');
+    </script>
+{% endif %}
+
+<div class="container">
+    <h2 class="text-center">Add Appointment</h2>
+    <form method="post" action="{% url 'add_appoinment' %}" enctype="multipart/form-data">
+        {% csrf_token %}
+        <!-- Your form fields, including the image field -->
+        <label>Appoint Name</label>
+        <input type="text" class="form-control" name="name">
+    
+        <label>Mobile</label>
+        <input type="number" class="form-control" name="mobile">
+    
+        <label>Gender</label>
+        <input type="text" class="form-control" name="gender">
+    
+        <label>Address</label>
+        <input type="text" class="form-control" name="address">
+    
+        <button type="submit">Submit</button>
+    </form>
+    
+</div>
+{% include 'footer.html' %}
