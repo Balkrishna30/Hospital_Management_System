@@ -38,16 +38,18 @@ A Django-based web application for managing hospital operations, appointments, a
    python mange.pyh make migrate
 
 ## Usage
+
 1. Run the Application
   ```bash
   python manage.py runserver
 2. Open your web browser and go to http://127.0.0.1:8000/ to access the application.
 
 ## Contributions
-   - **Contributions are welcome! Follow these steps to contribute:**
-   
-   - **Fork the repository.**
-      1 Create a new branch: git checkout -b feature/your-feature.
-      2 Commit your changes: git commit -m 'Add your feature'.
-      3 Push to the branch: git push origin feature/your-feature.
-      4 Submit a pull request.
+
+Contributions are welcome! Follow these steps to contribute:
+
+1. **Fork the repository.**
+2. Create a new branch: `git checkout -b feature/your-feature`.
+3. Commit your changes: `git commit -m 'Add your feature'`.
+4. Push to the branch: `git push origin feature/your-feature`.
+5. Submit a pull request.
