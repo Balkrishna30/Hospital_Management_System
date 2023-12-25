@@ -15,6 +15,8 @@ class Patient(models.Model):
     gender = models.CharField(max_length=50)
     mobile = models.IntegerField(null = True)
     address = models.TextField()
+    def __str__(self):
+        return self.name
 
 class Appointment(models.Model):
     doctor = models.ForeignKey(Doctor,on_delete=models.CASCADE)

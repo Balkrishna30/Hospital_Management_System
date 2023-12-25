@@ -5,7 +5,8 @@
     </button>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav ml-auto"> <!-- Use ml-auto to push items to the right -->
+      <ul class="navbar-nav ml-auto"> 
+        {% if not request.user.is_staff %}<!-- Use ml-auto to push items to the right -->
         <li class="nav-item active">
           <a class="nav-link" href="{% url 'home' %}">Home <span class="sr-only">(current)</span></a>
         </li>
@@ -15,19 +16,22 @@
         <li class="nav-item">
             <a class="nav-link" href="{% url 'about' %}">About</a>
           </li>
-          {% if not request.user.is_staff %}
+         
           <li class="nav-item">
             <a class="nav-link" href="{% url 'admin_login' %}">LogIn</a>
           </li>
           {% endif %}
           {% if request.user.is_staff %}
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'dashboard' %}">Dashboard<span class="sr-only">(current)</span></a>
+          </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
            Doctor
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="{% url 'view_doctor' %}">View_Doctor</a>
-            <a class="dropdown-item" href="{% url 'add_doctor' %}">Add_Doctor</a>
+            <a class="dropdown-item" href="{% url 'view_doctor' %}">View Doctor</a>
+            <a class="dropdown-item" href="{% url 'add_doctor' %}">Add Doctor</a>
           </div>
         </li>
         <li class="nav-item dropdown">
@@ -35,8 +39,8 @@
            Patient
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="{% url 'view_patient' %}">View_Patient</a>
-            <a class="dropdown-item" href="{% url 'add_patient' %}">Add_Patient</a>
+            <a class="dropdown-item" href="{% url 'view_patient' %}">View Patient</a>
+            <a class="dropdown-item" href="{% url 'add_patient' %}">Add Patient</a>
           </div>
         </li>
         <li class="nav-item dropdown">
@@ -44,8 +48,8 @@
            Appointment
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="{% url 'view_appointment' %}">View_Appointment</a>
-            <a class="dropdown-item" href="{% url 'add_appointment' %}">Add_Appointment</a>
+            <a class="dropdown-item" href="{% url 'view_appointment' %}">View Appointment</a>
+            <a class="dropdown-item" href="{% url 'add_appointment' %}">Add Appointment</a>
           </div>
         </li>
 
