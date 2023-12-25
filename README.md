@@ -1,6 +1,6 @@
 # Hospital Management System
 
-![Project Image](url_to_project_image)
+![Project Image]("C:\Users\balkrishna\Pictures\Screenshots\Screenshot 2023-12-25 152000.png")
 
 A Django-based web application for managing hospital operations, appointments, and patient information.
 
