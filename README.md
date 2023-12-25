@@ -35,13 +35,14 @@ A Django-based web application for managing hospital operations, appointments, a
 
 4. Apply Migrations
    ```bash
-   python mange.pyh make migrate
+   python mange.py make migrate
 
 ## Usage
 
 1. Run the Application
-  ```bash
-  python manage.py runserver
+   ```bash
+   python manage.py runserver
+
 2. Open your web browser and go to http://127.0.0.1:8000/ to access the application.
 
 ## Contributions
