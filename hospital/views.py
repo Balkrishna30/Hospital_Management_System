@@ -4,11 +4,29 @@ from django.contrib.auth.models import User
 from django.contrib.auth import authenticate,login,logout
 from django.views.decorators.csrf import csrf_protect
 from .models import Doctor,Patient,Appointment
+from .forms import AppointmentForm
+from django.contrib.auth.password_validation import validate_password
+from django.core.exceptions import ValidationError
 # Create your views here.
 def About(request):
     return render(request,'about.html')
 def Home(request):
-    return render(request, 'home.html')
+    if request.method == "POST":
+        appointment_form = AppointmentForm(request.POST)
+
+        #print(request.POST)
+        if appointment_form.is_valid():
+            appointment_form.save()
+            return redirect('home')
+
+    else:
+        appointment_form = AppointmentForm()
+
+    context = {
+        'appointment_form': appointment_form,
+    }
+
+    return render(request, 'home.html', context)
 def Contact(request):
     return render(request, 'contact.html')
 
@@ -30,22 +48,34 @@ def Index(request):
     d1 = {'d':d,'p':p,'a':a}
     return render(request,'index.html',d1)
 
+def validate_complex_password(password):
+    try:
+        validate_password(password)
+        return True
+    except ValidationError as e:
+        return False
+
 def Login(request):
     error = ""
     if request.method == "POST":
         u = request.POST['uname']
         p = request.POST['pwd']
-        user = authenticate(username=u,password = p)
-        try:
-            if user.is_staff:
-                login(request,user)
-                error = 'no'
-            else:
-                error ="yes"
-        except:
-            error ="yes"
-    d = {'error':error}
-    return render(request, 'login.html',d)
+        
+        if not validate_complex_password(p):
+            error = "Password does not meet complexity requirements."
+        else:
+            user = authenticate(username=u, password=p)
+            try:
+                if user.is_staff:
+                    login(request, user)
+                    error = 'no'
+                else:
+                    error = 'yes'
+            except:
+                error = 'yes'
+    
+    d = {'error': error}
+    return render(request, 'login.html', d)
 
 def Logout_admin(request):
     if not request.user.is_staff:

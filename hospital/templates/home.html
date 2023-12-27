@@ -48,6 +48,13 @@
         #specialist-doctors {
             background-color: #fff;
             padding: 15px;
+            margin: 20px 20px 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        #make-appointment {
+            background-color: #fff;
+            padding: 15px;
             margin: 20px 20px 50px;
             border-radius: 8px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -101,6 +108,27 @@
             <!-- Add more doctors as needed -->
         </ul>
     </section>
+    {% if error == "no" %}
+    <script>
+        alert('Record save successfully');
+        window.location = "{% url 'home' %}";
+    </script>
+    {% endif %}
+
+    {% if error == "yes" %}
+        <script>
+            alert('Invalid credentials!');
+        </script>
+    {% endif %}
+    <section id="make-appointment">
+        <h2>Make an Appointment</h2>
+        <form method="post">
+            {% csrf_token %}
+            {{ appointment_form.as_p }}
+            <button type="submit">Submit Appointment</button>
+        </form>
+      </section>
+    
 </body>
 </html>
 

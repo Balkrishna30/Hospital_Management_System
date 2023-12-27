@@ -23,4 +23,9 @@ class Appointment(models.Model):
     patient = models.ForeignKey(Patient,on_delete=models.CASCADE)
     date = models.DateField()
     time = models.TimeField()
+    
+    # def __str__(self):
+    #     return self.doctor, self.patient, self.date, self.time
+
+
 
